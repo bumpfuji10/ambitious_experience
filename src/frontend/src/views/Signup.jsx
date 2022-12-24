@@ -60,7 +60,7 @@ export default function Signup() {
           <input ref={departmentRef} type="department" placeholder="所属" />
           <input ref={addressRef} type="address" placeholder="住所" />
           <input ref={phoneRef} type="phone" placeholder="電話番号" />
-          {/**<input ref={employeeNumberRef} type="employee_number" placeholder="社員番号" />*/}
+          {/* <input ref={employeeNumberRef} type="employee_number" placeholder="社員番号" /> */}
           <input ref={passwordRef} type="password" placeholder="パスワード" />
           <input ref={passwordConfirmationRef} type="password" placeholder="パスワード確認" />
           <button className="btn btn-block">アカウント作成</button>

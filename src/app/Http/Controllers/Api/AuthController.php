@@ -22,7 +22,7 @@ class AuthController extends Controller
             'department' => $data['department'],
             'address' => $data['address'],
             'phone' => $data['address'],
-            //'employee_number' => $data['employee_number'],
+            // 'employee_number' => $data['employee_number'],
             'password' => bcrypt($data['password']),
         ]);
         $token = $user->createToken('main')->plainTextToken;

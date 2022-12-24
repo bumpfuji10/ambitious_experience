@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Password;
 
-class SignupRequest extends FormRequest
+class StoreUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,15 +25,11 @@ class SignupRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:55',
-            'email' => 'required|email|unique:users,email,'.$this->id,
-            'department' => 'required|string|max:55',
-            'address' => 'required|string|max:55',
-            'phone' => 'required',
-            // TODO: 正しいバリデーションルールを作成
+            'name' => 'required'|'string|max:55',
+            'email' => 'required|email|unique:users,email',
             'password' => [
                 'required',
-                'confirmed',
+                'confirmation',
                 Password::min(8)
                 ->letters()
                 ->symbols()
