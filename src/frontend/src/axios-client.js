@@ -19,7 +19,7 @@ axiosClient.interceptors.response.use((response) => {
       localStorage.removeItem('ACCESS_TOKEN')
     }
   } catch(e) {
-    console.error(e);
+
   }
     throw error;
   })

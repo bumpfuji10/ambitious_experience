@@ -6,6 +6,10 @@ import { useStateContext } from "../contexts/ContextsProvider";
 export default function Signup() {
   const nameRef = useRef();
   const emailRef = useRef();
+  const departmentRef = useRef();
+  const addressRef = useRef();
+  const phoneRef = useRef();
+  //const employeeNumberRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmationRef = useRef();
   const {setUser, setToken} = useStateContext()
@@ -16,6 +20,10 @@ export default function Signup() {
     const payload = {
       name: nameRef.current.value,
       email: emailRef.current.value,
+      department: departmentRef.current.value,
+      address: addressRef.current.value,
+      phone: phoneRef.current.value,
+      //employee_number: employeeNumberRef.current.value,
       password: passwordRef.current.value,
       password_confirmation: passwordConfirmationRef.current.value,
     }
@@ -49,6 +57,10 @@ export default function Signup() {
           }
           <input ref={nameRef} placeholder="お名前" />
           <input ref={emailRef} type="email" placeholder="メールアドレス" />
+          <input ref={departmentRef} type="department" placeholder="所属" />
+          <input ref={addressRef} type="address" placeholder="住所" />
+          <input ref={phoneRef} type="phone" placeholder="電話番号" />
+          {/* <input ref={employeeNumberRef} type="employee_number" placeholder="社員番号" /> */}
           <input ref={passwordRef} type="password" placeholder="パスワード" />
           <input ref={passwordConfirmationRef} type="password" placeholder="パスワード確認" />
           <button className="btn btn-block">アカウント作成</button>

@@ -145,6 +145,7 @@ return [
     'url' => 'The :attribute must be a valid URL.',
     'ulid' => 'The :attribute must be a valid ULID.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'phone' => '正しい電話番号を入力してください。',
 
     /*
     |--------------------------------------------------------------------------
