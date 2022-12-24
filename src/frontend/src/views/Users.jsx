@@ -1,37 +1,40 @@
-import { useEffect,useState } from "react";
-import axiosClient from "../axios-client";
-import { Link } from "react-router-dom";
+import {useEffect, useState} from "react";
+import axiosClient from "../axios-client.js";
+import {Link} from "react-router-dom";
+import {useStateContext} from "../contexts/ContextsProvider";
 
 export default function Users() {
-const [users, setUsers] = useState([]);
-const [loading, setLoading] = useState(false)
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const {setNotification} = useStateContext()
 
-useEffect(() => {
-  getUsers();
-}, [])
+  useEffect(() => {
+    getUsers();
+  }, [])
 
-const onDeleteClick = (user) => {
-  if (window.confirm("社員情報を削除しますか?")) {
-    return
-  }
-  axiosClient.delete(`/users/${user.id}`)
+  const onDeleteClick = user => {
+    if (!window.confirm("社員情報を削除しますか?")) {
+      return
+    }
+    axiosClient.delete(`/users/${user.id}`)
       .then(() => {
-        setNotification('社員情報の削除に成功しました')
+        setNotification('社員情報が削除されました')
         getUsers()
       })
-}
+  }
 
-const getUsers = () => {
-  axiosClient.get('/users')
-    .then(({data}) => {
-      setLoading(false)
-      console.log(data);
-      setUsers(data.data);
-    })
-    .catch(() => {
-      setLoading(false)
-    })
-}
+  const getUsers = () => {
+    setLoading(true)
+    axiosClient.get('/users')
+      .then(({ data }) => {
+        setLoading(false)
+        setUsers(data.data)
+      })
+      .catch(() => {
+        setLoading(false)
+      })
+  }
+
 
   return (
     <div>
@@ -54,6 +57,15 @@ const getUsers = () => {
               <th>アクション</th>
             </tr>
           </thead>
+          {loading && <tbody>
+            <tr>
+              <td colSpan="5" className="text-center">
+                読み込み中...
+              </td>
+            </tr>
+            </tbody>
+            }
+          {!loading  &&
           <tbody>
             {users.map(u => (
               <tr key={u.id}>
@@ -73,6 +85,7 @@ const getUsers = () => {
               </tr>
             ))}
           </tbody>
+          }
         </table>
       </div>
     </div>

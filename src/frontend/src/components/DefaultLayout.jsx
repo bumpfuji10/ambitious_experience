@@ -4,7 +4,7 @@ import axiosClient from "../axios-client";
 import { useStateContext } from "../contexts/ContextsProvider";
 
 export default function DefaultLayout() {
-  const {user, token, setUser, setToken} = useStateContext()
+  const {user, token, notification, setUser, setToken} = useStateContext()
 
   if(!token) {
     return <Navigate to="/login" />
@@ -31,21 +31,27 @@ export default function DefaultLayout() {
     <div id="defaultLayout">
       <aside>
         <Link to="/dashboard">ダッシュボード</Link>
-        <Link to="/users">社員情報</Link>
+        <Link to="/users">社員一覧</Link>
       </aside>
       <div className="content">
         <header>
           <div>
-            社員マスタ
+
           </div>
+          社員情報
           <div>
-            {user.name}
-            <a href="#" onClick={onLogout} className="btn-logout" >ログアウト</a>
+            {user.name} &nbsp; &nbsp;
+            <a onClick={onLogout} className="btn-logout" href="#">ログアウト</a>
           </div>
         </header>
         <main>
-          <Outlet />
+          <Outlet/>
         </main>
+        {notification &&
+          <div className="notification">
+            {notification}
+          </div>
+        }
       </div>
     </div>
   )
