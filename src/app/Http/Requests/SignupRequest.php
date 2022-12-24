@@ -30,6 +30,7 @@ class SignupRequest extends FormRequest
             'department' => 'required|string|max:55',
             'address' => 'required|string|max:55',
             'phone' => 'required',
+            // TODO: 正しいバリデーションルールを作成
             'password' => [
                 'required',
                 'confirmed',
