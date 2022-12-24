@@ -50,8 +50,8 @@ export default function Login() {
               ))}
             </div>
           }
-          <input ref={emailRef} type="email" placeholder="Email" />
-          <input ref={passwordRef} type="password" placeholder="Password" />
+          <input ref={emailRef} type="email" placeholder="メールアドレス" />
+          <input ref={passwordRef} type="password" placeholder="パスワード" />
           <button className="btn btn-block">ログイン</button>
           <p className="message">
             アカウントをお持ちでないですか? <Link to="/signup"><p>アカウントを作成</p></Link>
