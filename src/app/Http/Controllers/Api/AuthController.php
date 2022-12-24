@@ -10,7 +10,7 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function login(LoginRequest $request)
+    public function signup(SignupRequest $request)
     {
         $data = $request->validated();
         /** @var User $user */
@@ -23,7 +23,7 @@ class AuthController extends Controller
         return response(compact('user', 'token'));
     }
 
-    public function signup(SignupRequest $request)
+    public function login(LoginRequest $request)
     {
 
     }
